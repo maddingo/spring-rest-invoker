@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  *
  */
 
-public class TestMethodParameterDescriptior {
+public class TestMethodParameterDescriptor {
 
 	@Test
 	public void testSettersAndGetters() {

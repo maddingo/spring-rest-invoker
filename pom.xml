@@ -9,7 +9,6 @@
     <packaging>pom</packaging>
 
     <url>https://github.com/ggeorgovassilis/spring-rest-invoker</url>
-    <name>${project.groupId}:${project.artifactId}</name>
     <description>Spring factory that allows consumption of a remote REST JSON service by binding it to a local Java interface and exposing it as a proxy.</description>
     <licenses>
         <license>
@@ -76,5 +75,6 @@
     </build>
     <modules>
         <module>spring-rest-invoker</module>
+        <module>spring-rest-invoker-reactive</module>
     </modules>
 </project>

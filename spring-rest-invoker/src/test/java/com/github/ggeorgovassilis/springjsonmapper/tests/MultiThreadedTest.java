@@ -35,7 +35,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 @ContextConfiguration("classpath:test-context-bank-spring.xml")
 @ExtendWith(SpringExtension.class)
-public class MultiThreaddedTest {
+public class MultiThreadedTest {
 
 	final long TEST_DURATION_MS = 3000;
 	final int THREADS = 4;
@@ -81,16 +81,12 @@ public class MultiThreaddedTest {
 	
 	void runMultiThreaddedTest(final BankService service) throws Exception{
 		ExecutorService executorService = Executors.newFixedThreadPool(THREADS);
-		List<Future<Void>> results = new ArrayList<Future<Void>>();
+		List<Future<Void>> results = new ArrayList<>();
 		long start = System.currentTimeMillis();
 		while (start + TEST_DURATION_MS > System.currentTimeMillis()) {
-			Future<Void> f = executorService.submit(new Callable<Void>() {
-
-				@Override
-				public Void call() throws Exception {
-					executeTest(service);
-					return null;
-				}
+			Future<Void> f = executorService.submit(() -> {
+				executeTest(service);
+				return null;
 			});
 			results.add(f);
 			if (results.size() > THREADS) {
